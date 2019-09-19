@@ -26,7 +26,7 @@ def Q():
  return r.json()
 def K(lat,lon):
  B(lat,lon)
- r=A(f'{api_base}iss-pass.json?lat={lat}&lon={lon}')
+ r=A(f'{n}iss-pass.json?lat={lat}&lon={lon}')
  return r.json()
 def x(iss_location,indy_location,next_indy_time):
  F,d=r("map.gif").size
