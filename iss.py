@@ -1,72 +1,67 @@
 #!/usr/bin/env python3
-
-__author__ = 'Nathaniel Lyttle'
-
+B=print
+L=float
+V=str
+__author__='Nathaniel Lyttle'
 import requests
+A=requests.get
 import turtle
+P=turtle.Turtle
+S=turtle.Screen
 from PIL import Image
+r=Image.open
 import pprint as pp
+g=pp.pprint
 import time
-
-api_base = 'http://api.open-notify.org/'
-lat_bounds = (90, -90)
-lon_bounds = (-180, 180)
-indy_lat_long = (-86.1, 39.7)
-
-def get_astronauts_in_space_now():
-    r = requests.get(api_base+"astros.json")
-    return r.json()
-
-
-def get_iss_current_location():
-    r = requests.get(api_base+"iss-now.json")
-    return r.json()
-
-def get_iss_pass_information(lat, lon):
-    print(lat, lon)
-    r = requests.get(f'{api_base}iss-pass.json?lat={lat}&lon={lon}')
-    return r.json()
-
-def draw_map(iss_location, indy_location, next_indy_time):
-    width, height = Image.open("map.gif").size
-    s = turtle.Screen()
-    s.setup(width, height)
-    s.screensize(width, height, "yellow")
-    s.setworldcoordinates(lon_bounds[0], lat_bounds[1], lon_bounds[1], lat_bounds[0])
-    s.addshape('iss.gif')
-    s.bgpic('map.gif')
-
-
-    indy_dot = turtle.Turtle()
-    t = turtle.Turtle()
-    indy_dot.color("yellow")
-    indy_dot.up()
-    t.shape('iss.gif')
-    indy_dot.shape("circle")
-    t.up()
-    indy_dot.goto(indy_location)
-    t.goto(float(iss_location["longitude"]), float(iss_location["latitude"]))
-    text = turtle.Turtle()
-    text.color("green")
-    text.ht()
-    text.up()
-    text.goto(indy_location)
-    text.down()
-    text.write(str(time.ctime(next_indy_time)))
-
-    s.exitonclick()
-
-def main():
-    pp.pprint(get_astronauts_in_space_now())
-    r = get_iss_current_location()
-    indy = get_iss_pass_information(indy_lat_long[1],indy_lat_long[0])
-    print()
-    pp.pprint(r)
-    print()
-    pp.pprint(indy)
-    draw_map(r["iss_position"], indy_lat_long, indy['response'][0]['risetime'])
-
-
-
-if __name__ == '__main__':
-    main()
+G=time.ctime
+n='http://api.open-notify.org/'
+b=(90,-90)
+R=(-180,180)
+c=(-86.1,39.7)
+def k():
+ r=A(n+"astros.json")
+ return r.json()
+def Q():
+ r=A(n+"iss-now.json")
+ return r.json()
+def K(lat,lon):
+ B(lat,lon)
+ r=A(f'{n}iss-pass.json?lat={lat}&lon={lon}')
+ return r.json()
+def x(iss_location,indy_location,next_indy_time):
+ F,d=r("map.gif").size
+ s=S()
+ s.setup(F,d)
+ s.screensize(F,d,"yellow")
+ s.setworldcoordinates(R[0],b[1],R[1],b[0])
+ s.addshape('iss.gif')
+ s.bgpic('map.gif')
+ Y=P()
+ t=P()
+ Y.color("yellow")
+ Y.up()
+ t.shape('iss.gif')
+ Y.shape("circle")
+ t.up()
+ Y.goto(indy_location)
+ t.goto(L(iss_location["longitude"]),L(iss_location["latitude"]))
+ O=P()
+ O.color("green")
+ O.ht()
+ O.up()
+ O.goto(indy_location)
+ O.down()
+ O.write(V(G(next_indy_time)))
+ s.exitonclick()
+def f():
+ g(k())
+ r=Q()
+ l=K(c[1],c[0])
+ B()
+ g(r)
+ B()
+ g(l)
+ x(r["iss_position"],c,l['response'][0]['risetime'])
+if __name__=='__main__':
+ f()
+# Created by pyminifier (https://github.com/liftoff/pyminifier)
